@@ -2,7 +2,7 @@
     This adt contains earthquake data extracted from the csv
     operations:
         getMagnitudeFromMonth
-        getTsunamiLocationOfMonth
+        getTsunamiLocationOfMonthAndYear
         getTsunamiLocationOfYear
 """
 import pandas as pd
