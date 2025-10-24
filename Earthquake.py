@@ -33,6 +33,22 @@ class Earthquake:
         mag_list = month_data['magnitude'].tolist()
 
         return mag_list
+    
+    def getTsunamiLocationOfYear(self, year:int) -> pd.DataFrame:
+        """
+        Get Tsunami locations for a specific year
+        Args:
+            year: integer representing the year. Assumming from 2000-2022
+        
+        Returns:
+            Data frame that contains earthquake that causes tsunami, and its longitude and latitude of a specific year
+        """
+        tsunami_df = self._earthquakeData[(self._earthquakeData["Year"] == year) & 
+                                          (self._earthquakeData["tsunami"] == 1)]
+        
+        return tsunami_df[["latitude", "longitude", "Year", "magnitude"]]
+
+
 
 
 

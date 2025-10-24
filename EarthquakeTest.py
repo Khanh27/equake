@@ -3,6 +3,7 @@ Test suite for earquake ADT
 """
 import unittest
 from Earthquake import Earthquake
+import pandas as pd
 
 class EarthquakeTest(unittest.TestCase):
     def setUp(self):
@@ -32,6 +33,11 @@ class EarthquakeTest(unittest.TestCase):
         mag_list = self.earthquake.getMagnitudeFromMonth(13)  # Invalid month
         self.assertEqual(len(mag_list), 0, 
                         "Should return empty list for invalid month")
+        
+    def test_getTsunamiLocationOfYear_returns_dataframe(self):
+        year = 2020
+        df = self.earthquake.getTsunamiLocationOfYear(year)
+        self.assertIsInstance(df, pd.DataFrame)
 
 if __name__ == '__main__':
     unittest.main()

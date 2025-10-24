@@ -5,6 +5,8 @@ This ADT plots the data from the Earthquake data
 import matplotlib.pyplot as plt
 import seaborn as sns
 from Earthquake import Earthquake
+import plotly.express as px
+import plotly.graph_objects as go
 
 class Plot:
     """
@@ -92,3 +94,37 @@ class Plot:
         plt.grid(True, alpha=0.3)
         plt.show()
 
+
+    def plot_tsunami_caused_by_earthquake_for_year(self, year:int):
+        """
+        Plot earthquakes on an interactive world map using Plotly.
+        Requires latitude, longitude, and magnitude data from your CSV.
+        
+        Args:
+            month: integer representing month assuming from (1-12).
+        """
+
+        df = self.earthquakeData.getTsunamiLocationOfYear(year)
+
+        fig = px.scatter_geo(df,
+                            lat='latitude',
+                            lon='longitude',
+                            color='magnitude',
+                            size='magnitude',
+                            hover_data=['magnitude', 'Year'],
+                            color_continuous_scale='Reds',
+                            title=f'Earthquake Map that caused tsunami in{f" - Year {year}"}',
+                            projection='natural earth'
+                        )
+        
+        fig.update_layout(
+                geo=dict(
+                    showland=True,
+                    landcolor='lightgray',
+                    coastlinecolor='white',
+                    showocean=True,
+                    oceancolor='lightblue'
+                )
+            )
+            
+        fig.show()
