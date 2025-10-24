@@ -47,6 +47,23 @@ class Earthquake:
                                           (self._earthquakeData["tsunami"] == 1)]
         
         return tsunami_df[["latitude", "longitude", "Year", "magnitude"]]
+    
+    def getTsunamiLocationOfMonthAndYear(self, month:int, year:int):
+        """
+        Get Tsunami locations for a specific year and month
+        Args:
+            month: integer representing the month. Assuming from 1-12
+            year: integer representing the year. Assumming from 2000-2022
+        
+        Returns:
+            Data frame that contains earthquake that causes tsunami, and its longitude and latitude of a specific year and month
+        """
+        tsunami_df = self._earthquakeData[(self._earthquakeData["Year"] == year) & 
+                                          (self._earthquakeData["tsunami"] == 1) &
+                                          (self._earthquakeData["Month"] == month)]
+        
+        return tsunami_df[["latitude", "longitude", "Month", "Year", "magnitude"]]
+
 
 
 

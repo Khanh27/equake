@@ -8,6 +8,7 @@ from Earthquake import Earthquake
 import plotly.express as px
 import plotly.graph_objects as go
 
+
 class Plot:
     """
     initialize earthquake data
@@ -101,7 +102,7 @@ class Plot:
         Requires latitude, longitude, and magnitude data from your CSV.
         
         Args:
-            month: integer representing month assuming from (1-12).
+            year: integer representing year assuming from 2020 - 2022.
         """
 
         df = self.earthquakeData.getTsunamiLocationOfYear(year)
@@ -121,10 +122,49 @@ class Plot:
                 geo=dict(
                     showland=True,
                     landcolor='lightgray',
-                    coastlinecolor='white',
                     showocean=True,
-                    oceancolor='lightblue'
+                    oceancolor='lightblue',
+                    showcountries=True,
+                    countrycolor='white'
                 )
             )
             
         fig.show()
+
+    def plot_tsunami_caused_by_earthquake_for_month_and_year(self, month:int, year:int):
+        """
+        Plot earthquakes on an interactive world map using Plotly.
+        Requires latitude, longitude, and magnitude data from your CSV.
+        
+        Args:
+            month: integer representing month, assuming from 1 - 12 
+            year: integer representing year, assuming from 2020 - 2022.
+
+        """
+
+        df = self.earthquakeData.getTsunamiLocationOfMonthAndYear(month, year)
+
+        fig = px.scatter_geo(df,
+                            lat='latitude',
+                            lon='longitude',
+                            color='magnitude',
+                            size='magnitude',
+                            hover_data=['magnitude', 'Month', 'Year'],
+                            color_continuous_scale='Reds',
+                            title=f'Earthquake Map that caused tsunami in{f" - Year {year}"} and {f"- Month {month}"}',
+                            projection='natural earth'
+                        )
+        
+        fig.update_layout(
+                geo=dict(
+                    showland=True,
+                    landcolor='lightgray',
+                    showocean=True,
+                    oceancolor='lightblue',
+                    showcountries=True,
+                    countrycolor='white'
+                )
+            )
+            
+        fig.show()
+

@@ -39,5 +39,7 @@ class EarthquakeTest(unittest.TestCase):
         df = self.earthquake.getTsunamiLocationOfYear(year)
         self.assertIsInstance(df, pd.DataFrame)
 
+    
+
 if __name__ == '__main__':
     unittest.main()
