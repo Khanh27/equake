@@ -9,7 +9,7 @@ def main():
     earthquake = Earthquake()
     plot = Plot()
 
-    print(len(earthquake.getMagnitudeFromMonth(1)))
+    #print(len(earthquake.getMagnitudeFromMonth(1)))
     #plot.plot_magnitude_scatter(1)
     #plot.plot_scatter_comparison(1, 2)
     #plot.plot_tsunami_caused_by_earthquake_for_year(2022)

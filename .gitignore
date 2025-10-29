@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+venv.bak/
+
+# Python cache / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs and debug output
+*.log
+*.pid
+*.out
+*.err
+logs/
+
+# Environment / secrets
+.env
+.env.*
+!env.example
+
+# Docker
+# Ignore local data directories or bind-mounted volumes
+db_data/
+pgdata/
+.docker/
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Pytest / coverage
+.cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+coverage.xml
+*.cover
+*.py,cover
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+*.bak
